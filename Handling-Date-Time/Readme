@@ -1,0 +1,33 @@
+# Date and Time Feature Engineering
+
+This project focuses on extracting meaningful features from temporal data using **Pandas** and **NumPy**. It covers essential techniques for transforming raw date and time strings into structured numerical and categorical components for machine learning.
+
+## 📂 Features Covered
+
+### 1. Working with Dates
+* **Data Type Conversion**: Standardizing date columns using `pd.to_datetime`.
+* **Extraction of Date Components**:
+    * **Year & Month**: Extracting numerical years, month numbers, and month names (e.g., "December").
+    * **Day Details**: Isolating the day of the month and day of the week.
+    * **Weekend Analysis**: Creating binary flags to identify if a date falls on a weekend.
+* **Time Deltas**: Calculating **elapsed time** (recency) by measuring the difference between specific dates and the current system time.
+
+### 2. Working with Time
+* **Granular Time Extraction**: Breaking down timestamps into:
+    * **Hours, Minutes, and Seconds**.
+* **Time-Based Comparisons**: Utilizing `np.timedelta64` to calculate duration and intervals in specific units like minutes.
+
+## 🛠️ Tech Stack & Libraries
+* **Python 3.x**
+* **Pandas**: For core data manipulation and `.dt` accessor functions.
+* **NumPy**: For advanced timedelta calculations.
+
+## 📊 Datasets Used
+The notebook utilizes two primary CSV files to demonstrate these techniques:
+1. `orders.csv`: Focused on date-based feature extraction from transactional data.
+2. `messages.csv`: Focused on granular time and timestamp extraction from communication logs.
+
+## 🚀 Key Takeaways
+Transforming date/time objects into individual features allows models to capture seasonal patterns, weekly trends, and the impact of specific times of day on target variables.
+
+### Video Link : https://youtu.be/J73mvgG9fFs
