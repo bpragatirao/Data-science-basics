@@ -1,38 +1,27 @@
 # Outlier Removal using Z-Score
 
-This repository demonstrates the practical implementation of **Z-Score** based outlier detection and removal. The project focuses on identifying data points that significantly deviate from the mean in a normally distributed dataset.
+This repository demonstrates the implementation of **Z-Score** based outlier detection and removal. This statistical technique is best suited for datasets that follow a **Normal Distribution** (Bell Curve).
 
 ## Project Overview
-Outliers can skew statistical analyses and degrade the performance of machine learning models. This project uses a placement dataset to identify students with unusually high or low CGPAs based on the standard deviation from the average.
+The project uses a placement dataset to identify and handle extreme values in the `cgpa` feature. By calculating how many standard deviations a data point is from the mean, we can identify "noise" that might negatively impact machine learning model performance.
 
 ## Technical Stack
 * **Language**: Python 3
-* **Libraries**: 
-    * `numpy` and `pandas` for data manipulation
-    * `matplotlib` and `seaborn` for data visualization
+* **Libraries**: `numpy`, `pandas`, `matplotlib`, `seaborn`
 
 ## Methodology
+1. **Distribution Check**: Using `sns.distplot` to confirm the feature is normally distributed.
+2. **Z-Score Calculation**: Finding the number of standard deviations ($\sigma$) a point is from the mean ($\mu$).
+3. **Boundary Setting**: 
+    * **Upper Limit**: $\mu + 3\sigma$
+    * **Lower Limit**: $\mu - 3\sigma$
+4. **Handling Techniques**:
+    * **Trimming**: Removing rows entirely if they fall outside the limits.
+    * **Capping (Winsorization)**: Replacing outliers with the nearest boundary value to maintain dataset size.
 
-### 1. Statistical Foundation (Z-Score)
-The Z-score represents how many standard deviations a data point is from the mean. It is calculated as:
-$$Z = \frac{x - \mu}{\sigma}$$
-Where:
-* $x$ is the value
-* $\mu$ is the mean
-* $\sigma$ is the standard deviation
-
-### 2. Implementation Steps
-* **Distribution Check**: Visualizing data using Distplots to ensure the feature follows a Normal Distribution.
-* **Boundary Calculation**: 
-    * **Upper Limit**: $mean + 3 \times std$
-    * **Lower Limit**: $mean - 3 \times std$
-* **Trimming**: Removing rows that fall outside the calculated boundaries.
-* **Capping (Winsorization)**: Replacing outliers with the upper or lower limit values instead of deleting them.
-
-## Key Results
-The project showcases the "before" and "after" effects of outlier removal:
-* **Before**: The CGPA column contained extreme values (e.g., 9.12 or 3.30) that were outside the $3\sigma$ range.
-* **After**: The dataset is cleaned, resulting in a more robust distribution for subsequent modeling or analysis.
+## Results
+* **Detection**: Identified students with extreme CGPAs (e.g., 9.12 or 3.3).
+* **Outcome**: Created a cleaned dataset with a normalized range, improving the reliability of statistical analysis.
 
 ## Usage
 1. Ensure `placement.csv` is available in the root directory.
